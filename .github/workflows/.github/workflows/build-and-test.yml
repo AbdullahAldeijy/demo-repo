@@ -28,9 +28,11 @@ jobs:
 
     - name: Run Build
       run: |
+
+      Added GitHub Actions build and test workflow
+
         python setup.py build
 
     - name: Run Tests
       run: |
         pytest tests/
-
