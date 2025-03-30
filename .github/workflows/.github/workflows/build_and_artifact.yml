@@ -22,14 +22,19 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install wheel
+        pip install wheel  # Ensure wheel is installed
 
     - name: Run Build
       run: |
-        python setup.py bdist_wheel  # This creates your package in the dist/ folder
+        python setup.py bdist_wheel  # This will create your package in the dist/ folder
+
+    - name: Debug Build Output
+      run: |
+        echo "Listing all files after build:"
+        ls -R
 
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v4
       with:
         name: build-artifact
-        path: dist/  # This is the folder where the .whl file is saved
+        path: dist/  # This is the folder where your build files are saved
