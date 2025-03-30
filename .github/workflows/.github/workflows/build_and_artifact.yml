@@ -22,19 +22,14 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install wheel  # Ensure wheel is installed
+        pip install wheel
 
     - name: Run Build
       run: |
-        python setup.py bdist_wheel  # Create a proper build output
-
-    - name: Debug Build Output
-      run: |
-        echo "Listing all files after build:"
-        ls -R
+        python setup.py bdist_wheel  # This creates your package in the dist/ folder
 
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v4
       with:
         name: build-artifact
-        path: dist/
+        path: dist/  # This should match where your built files are saved
